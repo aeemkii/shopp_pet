@@ -1,4 +1,5 @@
 from apps.shop.models import Product, Category
+
 from rest_framework import serializers
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -10,3 +11,4 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = "__all__"
+

@@ -14,7 +14,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField("Название", max_length=255)
-    description = models.TextField('Описание')
+    description = models.TextField('Описание',  null=True)
     price = models.DecimalField("Цена", max_digits=10, decimal_places=2)
     category = models.ForeignKey(
         Category,

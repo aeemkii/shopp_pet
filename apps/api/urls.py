@@ -1,26 +1,12 @@
-from django.urls import path
 
-from . import views
+from django.urls import path, include
+from rest_framework import routers
+from .views import ProductListAPIView, CategoryListAPIView
 
-from drf_yasg import openapi
-from drf_yasg.views import get_schema_view
-
-
-schema_view = get_schema_view(
-    openapi.Info(
-        title="Shop",
-        default_version='v1',
-        description="Shop api",
-        contact=openapi.Contact(email="limkengha@gmail.com"),
-        license=openapi.License(name="BSD License"),
-    ),
-    public=True,
-)
-
+router = routers.DefaultRouter()
+router.register('products', ProductListAPIView)
+router.register('categories', CategoryListAPIView)
 
 urlpatterns = [
-    path("docs/", schema_view.with_ui("swagger")),
-    path("products/", views.ProductListAPIView.as_view()), 
-    path("categories/", views.CategoryListAPIView.as_view()),
-    
+    path('', include(router.urls)),
 ]
