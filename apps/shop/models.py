@@ -13,6 +13,7 @@ class Category(models.Model):
         return self.name
 
 class Product(models.Model):
+    
     name = models.CharField("Название", max_length=255)
     description = models.TextField('Описание',  null=True)
     price = models.DecimalField("Цена", max_digits=10, decimal_places=2)
@@ -31,3 +32,11 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+class CheckOut(models.Model):
+    name = models.CharField("Имя", max_length=255)
+    surname = models.CharField("Фамилие", max_length=255)
+    midlle = models.CharField("Отчество", max_length=255, null= True)
+    phone = models.CharField("Мобильный номер", max_length=20)
+    card = models.CharField("Номер карты", max_length=20)
+    products = models.ManyToManyField(Product)

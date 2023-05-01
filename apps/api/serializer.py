@@ -1,4 +1,4 @@
-from apps.shop.models import Product, Category
+from apps.shop.models import Product, Category, CheckOut
 
 from rest_framework import serializers
 
@@ -12,3 +12,8 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = "__all__"
 
+
+class CheckOutSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CheckOut
+        fields = "__all__"
